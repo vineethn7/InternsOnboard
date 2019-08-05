@@ -1,4 +1,13 @@
 {% extends 'InternsOnboardMain/base.html' %}
+{% load crispy_forms_tags  %}
 {% block content %}
-    <h1>If user is not logged in, show this default page</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-info">Submit</button>
+    </div>
+</form>
 {% endblock content%}
