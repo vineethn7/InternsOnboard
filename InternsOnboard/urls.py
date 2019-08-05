@@ -5,6 +5,7 @@ from InternsOnboardMain import views
 
 urlpatterns = [
     path('', include('InternsOnboardMain.urls')),
+    path('', include('studentPortal.urls')),
     path('admin/', admin.site.urls),
     path('api/',views.internshipPostList.as_view()),
 ]

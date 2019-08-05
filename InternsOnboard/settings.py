@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'InternsOnboardMain.apps.InternsonboardmainConfig',
+    'studentPortal.apps.StudentportalConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

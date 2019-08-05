@@ -1,0 +1,20 @@
+{% extends 'InternsOnboardMain/base.html' %}
+{% load crispy_forms_tags  %}
+{% block content %}
+<h1>Internships Available</h1>
+{% for internship in internships %}
+  <article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <hr>
+      <h2>{{ internship.company_name }}</h2>
+      <small class="text-muted">{{ internship.date_posted|date:"F d, Y" }}</small>
+    </div>
+    <p class="article-content" >{{ internship.description}}
+      <button class="btn btn-primary" type="button">Apply</button>
+    </p>
+  </div>
+  <hr>
+  </article>
+  {% endfor %}
+{% endblock content%}
