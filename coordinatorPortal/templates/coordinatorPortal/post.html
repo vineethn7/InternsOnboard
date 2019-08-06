@@ -1,6 +1,7 @@
 {% extends 'InternsOnboardMain/base.html' %}
 {% load crispy_forms_tags  %}
 {% block content %}
+<<<<<<< HEAD
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <fieldset class="form-group">
@@ -11,3 +12,22 @@
     </div>
 </form>
 {% endblock content%}
+=======
+<div class="content-section">
+{% if user.userprofile.usertype == 'ic' %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info">Submit</button>
+        </div>
+    </form>
+{% else %}
+  <br>
+  <h3 class="text-danger" style="text-align:center;">Action not allowed!</h3>
+{% endif %}
+</div>
+{% endblock content %}
+>>>>>>> master
