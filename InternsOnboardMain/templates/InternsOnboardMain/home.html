@@ -5,7 +5,26 @@
     {% if user.userprofile.usertype == 's' %}
         Show list of internships available.
     {% elif user.userprofile.usertype == 'ic' %}
-      show list of internships added and button to add
+      <form method="get" action="{% url 'Test-Post' %}">
+        <br>
+        <div>Add new internship <button style="float: right;" class="btn btn-primary" type="submit"> New </button></div>
+        <br>
+      </form>
+      {% for internship in internships %}
+      <div class="card border mb-3">
+        <div class="card-header">
+          <div align="left">
+          {{ internship.company_name }}<span style="float: right;">{{ internship.created_at|date:"F d, Y" }}</span>
+        </div>
+
+      </div>
+          <div class="card-body">
+            <p>Role : {{ internship.role}}</p>
+            <p class="card-text">{{ internship.description}}</p>
+          </div>
+      </div>
+        {% endfor %}
+
     {% elif user.userprofile.usertype == 'h' %}
         Show list of students along with the company they are interns at.
     {% else %}

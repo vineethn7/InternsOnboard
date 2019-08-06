@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-from django.shortcuts import render
-
-# Create your views here.
-=======
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -20,7 +15,7 @@ def post(request):
         if form.is_valid():
             internshipForm = form.save(commit=False)
             internshipForm.owner = request.user
-            internshipForm.Uploader_info = request.user
+            #internshipForm.Uploader_info = request.user
             company_name = form.cleaned_data.get('company_name')
             internshipForm.save()
             messages.success(request, 'Internship for {} Posted successfully'.format(company_name))
@@ -36,4 +31,3 @@ def post(request):
     else:
         form = InternshipsUploadForm()
         return render(request, 'coordinatorPortal/post.html', {'form': form})
->>>>>>> master
