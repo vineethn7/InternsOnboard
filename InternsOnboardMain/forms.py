@@ -4,4 +4,4 @@ from .models import internshipPost
 class internshipPostForm(forms.ModelForm):
     class Meta:
         model = internshipPost
-        fields='__all__'
+        fields=['company_name','description']

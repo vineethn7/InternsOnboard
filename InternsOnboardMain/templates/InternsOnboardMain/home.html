@@ -1,28 +1,15 @@
 {% extends 'InternsOnboardMain/base.html' %}
 {% load crispy_forms_tags  %}
 {% block content %}
-<<<<<<< HEAD
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <fieldset class="form-group">
-        {{ form|crispy }}
-    </fieldset>
-    <div class="form-group">
-        <button class="btn btn-outline-info">Submit</button>
-    </div>
-</form>
-{% endblock content%}
-=======
     <h2>
     {% if user.userprofile.usertype == 's' %}
         Show list of internships available.
     {% elif user.userprofile.usertype == 'ic' %}
-        Show list of internships posted and a form to create new internship post.
+      show list of internships added and button to add
     {% elif user.userprofile.usertype == 'h' %}
         Show list of students along with the company they are interns at.
     {% else %}
         Show default home page.
     {% endif %}
-    </h2>    
+    </h2>
 {% endblock content%}
->>>>>>> origin/master
