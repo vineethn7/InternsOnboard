@@ -5,6 +5,7 @@ from userRegister import views as user_views
 # from coordinatorPortal import views as coordinator_views
 from django.conf import settings
 from studentPortal import views as student_views
+from  django.conf.urls.static import static #new
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -19,3 +20,7 @@ urlpatterns = [
     path('apply/',student_views.apply,name='student-apply'),
     # path('accept/', coordinator_views.accept, name="internship-accept"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)

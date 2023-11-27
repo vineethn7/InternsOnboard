@@ -19,6 +19,7 @@ ALLOWED_HOSTS = [".awsapprunner.com","localhost"]
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'InternsOnboardMain.apps.InternsonboardmainConfig',
     'userRegister.apps.UserregisterConfig',
     'coordinatorPortal.apps.CoordinatorportalConfig',
