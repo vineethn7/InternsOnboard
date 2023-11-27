@@ -1,5 +1,4 @@
 import os
-from secrets import AWS_ACCESS_KEY_ID_1, AWS_SECRET_ACCESS_KEY_1
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -141,8 +140,18 @@ LOGIN_URL = 'login'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID_1
-AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY_1
+import boto3
+import json
+
+client = boto3.session.Session().client(service_name='secretsmanager', region_name='us-east-2')
+
+response = client.get_secret_value(
+    SecretId='arn:aws:secretsmanager:us-east-2:196626650470:secret:AWS_DJANGO_SECRETS_INTERNSONBOARD-OjGTXE',
+)
+
+
+AWS_ACCESS_KEY_ID = json.loads(response['SecretString'])['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = json.loads(response['SecretString'])['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = 'internsonboard'
 AWS_S3_SIGNATURE_NAME = 's3v4',
 AWS_S3_REGION_NAME = 'us-east-2'
