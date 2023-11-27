@@ -13,7 +13,7 @@ SECRET_KEY = '4t_b2=z*%#bjdedcl*lqlr6lgc2$c!)0#y&!(*@7acze3$vkco'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".awsapprunner.com","localhost"]
+ALLOWED_HOSTS = [".awsapprunner.com","localhost","3.15.151.115"]
 
 
 # Application definition
