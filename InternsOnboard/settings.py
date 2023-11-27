@@ -13,7 +13,7 @@ SECRET_KEY = '4t_b2=z*%#bjdedcl*lqlr6lgc2$c!)0#y&!(*@7acze3$vkco'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".awsapprunner.com"]
+ALLOWED_HOSTS = [".awsapprunner.com","localhost"]
 
 
 # Application definition
@@ -71,8 +71,12 @@ WSGI_APPLICATION = 'InternsOnboard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'djangodb',
+        'USER': 'postgres',
+        'PASSWORD': 'mysuperuser',
+        'HOST': 'django-db.cfgmvy9b2jap.us-east-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -116,16 +120,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
-
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "django.core.files.storage.FileSystemStorage",
+#     },
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -134,3 +137,15 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'InternsOnboard-Home'
 LOGIN_URL = 'login'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AWS_ACCESS_KEY_ID = 'AKIAS3R64SVTKZI25UYD '
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'internsonboard'
+AWS_S3_SIGNATURE_NAME = 's3v4',
+AWS_S3_REGION_NAME = 'us-east-2'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL =  None
+AWS_S3_VERITY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
